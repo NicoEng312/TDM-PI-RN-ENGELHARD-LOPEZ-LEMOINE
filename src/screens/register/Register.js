@@ -8,22 +8,23 @@ function Register(props){
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  function onSubmit(){
-    auth.createUserWithEmailAndPassword(email, password)
-      .then( response => {
-        props.navigation.navigate('Login')
-        db.collection('users').add({
-          email: email,
-          username: username,
-          createdAt: Date.now(),
-        })
-          .then()
-          .catch( e => console.log(e))
+  function onSubmit() {
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(response => {
+      db.collection('users').add({
+        email: response.user.email,
+        username: username,
+        createdAt: Date.now(),
       })
-      .catch( error => {
-        setError('Fallo en el registro.')
+      .then(() => {
+        props.navigation.navigate('Login');
       })
-  }
+      .catch(e => console.log(e));
+    })
+    .catch(error => {
+      setError('Fallo en el registro.');
+    });
+}
 
   return (
     <View style={styles.container}>
