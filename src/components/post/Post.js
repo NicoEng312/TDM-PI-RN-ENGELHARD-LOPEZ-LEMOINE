@@ -1,5 +1,6 @@
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { db, auth } from '../../firebase/config';
 import firebase from 'firebase';
 
@@ -39,23 +40,63 @@ function Post(props) {
       <View style={styles.acciones}>
         <Pressable style={styles.accion} onPress={() => toggleLike()}>
           <AntDesign
-            name={yaLikeo ? 'like1' : 'like2'}
+            name={yaLikeo ? 'dislike' : 'like'}
             size={22}
             color={yaLikeo ? '#5C67F2' : '#555'}
           />
-          <Text style={styles.contador}>{likes.length}</Text>
+          <Text style={styles.textoAccion}>Me gusta ({likes.length})</Text>
         </Pressable>
 
         <Pressable
           style={styles.accion}
           onPress={() => props.navigation.navigate('Comentarios', { id: post.id })}
         >
-          <AntDesign name="message1" size={22} color="#555" />
-          <Text style={styles.contador}>Comentar</Text>
+          <FontAwesome name="comment-o" size={22} color="#555" />
+          <Text style={styles.textoAccion}>Comentar</Text>
         </Pressable>
       </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  card: {
+    width: '100%',
+    backgroundColor: '#fff',
+    borderBottomWidth: 1,
+    borderBottomColor: '#eee',
+    paddingVertical: 12,
+    paddingHorizontal: 16,
+  },
+  usuario: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    marginBottom: 6,
+  },
+  imagen: {
+    width: '100%',
+    height: 300,
+    borderRadius: 8,
+    marginBottom: 8,
+  },
+  descripcion: {
+    fontSize: 14,
+    marginBottom: 10,
+  },
+  acciones: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  accion: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 20,
+  },
+  textoAccion: {
+    marginLeft: 6,
+    color: '#555',
+    fontWeight: '600',
+  },
+});
 
 export default Post;
