@@ -51,7 +51,7 @@ function Post(props) {
           onPress={() => props.navigation.navigate('Comentarios', { id: post.id })}
         >
           <Ionicons name="chatbubble-outline" size={22} color="#555" />
-          <Text style={styles.contador}>Comentar</Text>
+          <Text style={styles.textoAccion}>Comentar</Text>
         </Pressable>
       </View>
     </View>
@@ -59,13 +59,51 @@ function Post(props) {
 }
 
 const styles = StyleSheet.create({
-  card: { width: '100%', padding: 12, borderBottomWidth: 1, borderColor: '#eee' },
-  usuario: { fontWeight: 'bold', fontSize: 15, marginBottom: 6 },
-  imagen: { width: '100%', height: 200, borderRadius: 8, marginBottom: 8 },
-  descripcion: { fontSize: 14, marginBottom: 8 },
-  acciones: { flexDirection: 'row' },
-  accion: { flexDirection: 'row', alignItems: 'center', marginRight: 20 },
-  contador: { marginLeft: 6, fontSize: 14, color: '#555' },
+  card: {
+    width: '100%',
+    backgroundColor: '#fff',
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderColor: '#eee',
+  },
+  usuario: {
+    fontWeight: 'bold',
+    fontSize: 15,
+    color: '#222',
+    marginBottom: 8,
+  },
+  imagen: {
+    width: '100%',
+    height: 240,
+    borderRadius: 10,
+    marginBottom: 10,
+    backgroundColor: '#f2f2f2',
+  },
+  descripcion: {
+    fontSize: 14,
+    color: '#333',
+    lineHeight: 20,
+    marginBottom: 12,
+  },
+  acciones: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderTopWidth: 1,
+    borderColor: '#f0f0f0',
+    paddingTop: 10,
+  },
+  accion: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginRight: 24,
+  },
+  textoAccion: {
+    marginLeft: 6,
+    fontSize: 14,
+    color: '#555',
+    fontWeight: '600',
+  },
 });
 
 export default Post;
