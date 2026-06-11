@@ -42,8 +42,15 @@ function Home(props) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
-  flatlist: { width: '100%', flex: 1 },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+  flatlist: {
+    width: '100%',
+    flex: 1,
+  },
 });
 
 export default Home;
