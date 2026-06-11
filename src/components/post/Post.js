@@ -1,6 +1,5 @@
 import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
-import AntDesign from '@expo/vector-icons/AntDesign';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Ionicons } from '@expo/vector-icons';
 import { db, auth } from '../../firebase/config';
 import firebase from 'firebase';
 
@@ -32,15 +31,15 @@ function Post(props) {
       <Text style={styles.usuario}>{post.data.email}</Text>
 
       {post.data.image ? (
-        <Image style={styles.imagen} source={{ uri: post.data.image }} />
+        <Image style={styles.imagen} source={{ uri: post.data.image }} resizeMode='contain' />
       ) : null}
 
       <Text style={styles.descripcion}>{post.data.description}</Text>
 
       <View style={styles.acciones}>
         <Pressable style={styles.accion} onPress={() => toggleLike()}>
-          <AntDesign
-            name={yaLikeo ? 'dislike' : 'like'}
+          <Ionicons
+            name={yaLikeo ? 'heart' : 'heart-outline'}
             size={22}
             color={yaLikeo ? '#5C67F2' : '#555'}
           />
@@ -51,8 +50,8 @@ function Post(props) {
           style={styles.accion}
           onPress={() => props.navigation.navigate('Comentarios', { id: post.id })}
         >
-          <FontAwesome name="comment-o" size={22} color="#555" />
-          <Text style={styles.textoAccion}>Comentar</Text>
+          <Ionicons name="chatbubble-outline" size={22} color="#555" />
+          <Text style={styles.contador}>Comentar</Text>
         </Pressable>
       </View>
     </View>
@@ -60,43 +59,13 @@ function Post(props) {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    width: '100%',
-    backgroundColor: '#fff',
-    borderBottomWidth: 1,
-    borderBottomColor: '#eee',
-    paddingVertical: 12,
-    paddingHorizontal: 16,
-  },
-  usuario: {
-    fontWeight: 'bold',
-    fontSize: 15,
-    marginBottom: 6,
-  },
-  imagen: {
-    width: '100%',
-    height: 300,
-    borderRadius: 8,
-    marginBottom: 8,
-  },
-  descripcion: {
-    fontSize: 14,
-    marginBottom: 10,
-  },
-  acciones: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  accion: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginRight: 20,
-  },
-  textoAccion: {
-    marginLeft: 6,
-    color: '#555',
-    fontWeight: '600',
-  },
+  card: { width: '100%', padding: 12, borderBottomWidth: 1, borderColor: '#eee' },
+  usuario: { fontWeight: 'bold', fontSize: 15, marginBottom: 6 },
+  imagen: { width: '100%', height: 200, borderRadius: 8, marginBottom: 8 },
+  descripcion: { fontSize: 14, marginBottom: 8 },
+  acciones: { flexDirection: 'row' },
+  accion: { flexDirection: 'row', alignItems: 'center', marginRight: 20 },
+  contador: { marginLeft: 6, fontSize: 14, color: '#555' },
 });
 
 export default Post;
