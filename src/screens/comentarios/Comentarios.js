@@ -77,58 +77,55 @@ export default Comentarios;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     padding: 16,
+    backgroundColor: '#fff',
   },
   titulo: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
-    color: '#222',
-    marginBottom: 12,
+    marginBottom: 16,
+    marginTop: 40,
+  },
+  lista: {
+    flex: 1,
+  },
+  comentario: {
+    backgroundColor: '#f5f5f5',
+    borderRadius: 10,
+    padding: 12,
+    marginBottom: 10,
+  },
+  autor: {
+    fontWeight: 'bold',
+    marginBottom: 4,
+    color: '#333',
+  },
+  texto: {
+    color: '#555',
   },
   formulario: {
     flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 16,
+    gap: 8,
+    paddingTop: 8,
+    paddingBottom: 16,
   },
   input: {
     flex: 1,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 8,
-    paddingHorizontal: 12,
-    paddingVertical: 8,
-    fontSize: 14,
-    marginRight: 8,
+    borderColor: '#ddd',
+    borderRadius: 10,
+    padding: 12,
+    fontSize: 15,
   },
   boton: {
     backgroundColor: '#5C67F2',
-    borderRadius: 8,
-    paddingVertical: 10,
     paddingHorizontal: 16,
+    borderRadius: 10,
+    justifyContent: 'center',
   },
   textoBoton: {
     color: '#fff',
-    fontWeight: '600',
-  },
-  lista: {
-    width: '100%',
-    flex: 1,
-  },
-  comentario: {
-    borderBottomWidth: 1,
-    borderColor: '#eee',
-    paddingVertical: 10,
-  },
-  autor: {
     fontWeight: 'bold',
-    fontSize: 14,
-    color: '#222',
-    marginBottom: 2,
-  },
-  texto: {
-    fontSize: 14,
-    color: '#333',
   },
 });
 
