@@ -71,3 +71,4 @@ function Comentarios(props) {
     </View>
   );
 }
+export default Comentarios;
