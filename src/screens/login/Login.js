@@ -13,7 +13,15 @@ function Login(props){
         props.navigation.navigate('Home')
       })
       .catch( error => {
-        setError('Credenciales inválidas.')
+        if (error.code === 'auth/invalid-email') {
+          setError('El email no es válido.')
+        } else if (error.code === 'auth/user-not-found') {
+          setError('No existe una cuenta con ese email.')
+        } else if (error.code === 'auth/wrong-password') {
+          setError('La contraseña es incorrecta.')
+        } else {
+          setError(error.message)
+        }
       })
   }
 

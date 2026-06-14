@@ -22,7 +22,15 @@ function Register(props){
       .catch(e => console.log(e));
     })
     .catch(error => {
-      setError('Fallo en el registro.');
+      if (error.code === 'auth/email-already-in-use') {
+        setError('Ese email ya está registrado.');
+      } else if (error.code === 'auth/invalid-email') {
+        setError('El email no es válido.');
+      } else if (error.code === 'auth/weak-password') {
+        setError('La contraseña debe tener al menos 6 caracteres.');
+      } else {
+        setError(error.message);
+      }
     });
 }
 
