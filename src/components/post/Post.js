@@ -1,4 +1,4 @@
-import { View, Text, Pressable, Image, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { db, auth } from '../../firebase/config';
 import firebase from 'firebase';
@@ -29,10 +29,6 @@ function Post(props) {
   return (
     <View style={styles.card}>
       <Text style={styles.usuario}>{post.data.email}</Text>
-
-      {post.data.image ? (
-        <Image style={styles.imagen} source={{ uri: post.data.image }} resizeMode='contain' />
-      ) : null}
 
       <Text style={styles.descripcion}>{post.data.description}</Text>
 
@@ -72,13 +68,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     color: '#222',
     marginBottom: 8,
-  },
-  imagen: {
-    width: '100%',
-    height: 240,
-    borderRadius: 10,
-    marginBottom: 10,
-    backgroundColor: '#f2f2f2',
   },
   descripcion: {
     fontSize: 14,
