@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { View, Text, TextInput, Pressable, FlatList, ActivityIndicator } from 'react-native';
+import { View, Text, TextInput, Pressable, FlatList, ActivityIndicator, StyleSheet } from 'react-native';
 import { db, auth } from '../../firebase/config';
 
 function Comentarios(props) {
@@ -73,7 +73,6 @@ function Comentarios(props) {
   );
 }
 
-export default Comentarios;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
