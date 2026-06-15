@@ -28,9 +28,9 @@ function Post(props) {
 
   return (
     <View style={styles.card}>
-      <Text style={styles.usuario}>{post.data.email}</Text>
+      <Text style={styles.usuario}>{post.data.owner}</Text>
 
-      <Text style={styles.descripcion}>{post.data.description}</Text>
+      <Text style={styles.descripcion}>{post.data.descripcion}</Text>
 
       <View style={styles.acciones}>
         <Pressable style={styles.accion} onPress={() => toggleLike()}>
@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     color: '#333',
     lineHeight: 20,
     marginBottom: 12,
+    fontFamily: 'Times New Roman'
   },
   acciones: {
     flexDirection: 'row',
