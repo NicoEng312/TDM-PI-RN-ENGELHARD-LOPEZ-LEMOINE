@@ -7,23 +7,14 @@ function Login(props){
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  function onSubmit(){
+function onSubmit(){
     auth.signInWithEmailAndPassword(email, password)
       .then( response => {
-        props.navigation.navigate('Home')
       })
       .catch( error => {
-        if (error.code === 'auth/invalid-email') {
-          setError('El email no es válido.')
-        } else if (error.code === 'auth/user-not-found') {
-          setError('No existe una cuenta con ese email.')
-        } else if (error.code === 'auth/wrong-password') {
-          setError('La contraseña es incorrecta.')
-        } else {
-          setError(error.message)
-        }
+        setError('Credenciales inválidas.')
       })
-  }
+}
 
   return (
     <View style={styles.container}>

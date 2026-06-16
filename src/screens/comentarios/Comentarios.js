@@ -42,31 +42,33 @@ function Comentarios(props) {
       .catch(e => console.log(e));
   }
 
-  return (
-    <View>
-      <Text>Comentarios</Text>
+return (
+    <View style={styles.container}>
+      <Text style={styles.titulo}>Comentarios</Text>
       {loading ? (
         <ActivityIndicator size="large" color="#5C67F2" />
       ) : (
         <FlatList
+          style={styles.lista}
           data={comentarios}
           keyExtractor={item => item.id.toString()}
           renderItem={({ item }) => (
-            <View>
-              <Text>{item.data.email}</Text>
-              <Text>{item.data.texto}</Text>
+            <View style={styles.comentario}>
+              <Text style={styles.autor}>{item.data.email}</Text>
+              <Text style={styles.texto}>{item.data.texto}</Text>
             </View>
           )}
         />
       )}
-      <View>
+      <View style={styles.formulario}>
         <TextInput
+          style={styles.input}
           placeholder='Escribí un comentario...'
           value={texto}
           onChangeText={t => setTexto(t)}
         />
-        <Pressable onPress={() => agregarComentario()}>
-          <Text>Enviar</Text>
+        <Pressable style={styles.boton} onPress={() => agregarComentario()}>
+          <Text style={styles.textoBoton}>Enviar</Text>
         </Pressable>
       </View>
     </View>

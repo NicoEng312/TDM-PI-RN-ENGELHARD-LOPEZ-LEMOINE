@@ -8,31 +8,22 @@ function Register(props){
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  function onSubmit() {
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(response => {
-      db.collection('users').add({
-        email: response.user.email,
-        username: username,
-        createdAt: Date.now(),
+function onSubmit() {
+    auth.createUserWithEmailAndPassword(email, password)
+      .then(response => {
+        db.collection('users').add({
+          email: email,
+          username: username,
+          createdAt: Date.now(),
+        })
+          .then()
+          .catch(e => console.log(e))
+        auth.signOut()
       })
-      .then(() => {
-        props.navigation.navigate('Login');
+      .catch(error => {
+        setError('Fallo en el registro.')
       })
-      .catch(e => console.log(e));
-    })
-    .catch(error => {
-      if (error.code === 'auth/email-already-in-use') {
-        setError('Ese email ya está registrado.');
-      } else if (error.code === 'auth/invalid-email') {
-        setError('El email no es válido.');
-      } else if (error.code === 'auth/weak-password') {
-        setError('La contraseña debe tener al menos 6 caracteres.');
-      } else {
-        setError(error.message);
-      }
-    });
-}
+  }
 
   return (
     <View style={styles.container}>
